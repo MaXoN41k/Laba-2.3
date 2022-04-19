@@ -26,10 +26,11 @@ public:
   int NumChar(char c);
   int StrPos(const char* s);
   void PrintSplit(const char c);
-  char** Split(const char c);
+  char** Split(const char c, int &k);
   TString Mult(const int k);
   char MuchSymvol();
   char* MasSymvol();
+  int* CharPositions(const char* s, int &k);
 private:
   int len;
   char* str;

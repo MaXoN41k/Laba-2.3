@@ -245,7 +245,7 @@ void TString::PrintSplit(const char c)
   }
 }
 
-char** TString::Split(const char c)
+char** TString::Split(const char c, int &k)
 {
   int n = 0;
   for (int i = 0; i < len; i++)
@@ -273,9 +273,13 @@ char** TString::Split(const char c)
           word[i] = str[j - l + i];
         }
         word[l] = 0;
-        mas[n] = new char[l+1];
-        mas[n] = word;
-        n++;
+        if (word != 0)
+        {        
+          mas[n] = new char[l+1];
+          mas[n] = word; 
+          n++;
+          k++;
+        }
         l = 0;
         j++;
       }
@@ -355,6 +359,61 @@ char* TString::MasSymvol()
   }
   res[length] = 0;
   return res;
+}
+
+int* TString::CharPositions(const char* s,int &k)
+{
+  int n = -1;
+  int* mas;
+  int l;
+  l = StrLen(s);
+  int i = 0;
+  bool f;
+  while (i <= len - l)
+  {
+    f = true;
+    for (int j = i; j < i + l; j++)
+    {
+      if (str[j] != s[j - i])
+      {
+        f = false;
+        break;
+      }
+    }
+    if (f == true)
+    {
+      n++;
+    }
+    i++;
+  }
+  n++;
+  mas = new int[n];
+  i = 0;
+  n = 0;
+  while (i <= len - l)
+  {
+    f = true;
+    for (int j = i; j < i + l; j++)
+    {
+      if (str[j] != s[j - i])
+      {
+        f = false;
+        break;
+      }
+    }
+    if (f == true)
+    {
+      mas[n] = i;
+      n++;
+      k++;
+      i++;
+    }
+    else
+    {
+      i++;
+    }
+  }
+  return mas;
 }
 
 ostream& operator<<(ostream& ostr, const TString& s)

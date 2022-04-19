@@ -33,13 +33,14 @@ int main()
   //  cout << ex.what() << endl;
   //}
   
-  TString s5("ad ghhth 3434 ");
-  char** res;
-  res = s5.Split(' ');
-  for (int i = 0; i < 3; i++)
-  {
-    cout << res[i]<<endl;
-  }
+  //TString s5("adaaaghhtha3434");
+  //char** res;
+  //int l=0;
+  //res = s5.Split('a',l);
+  //for (int i = 0; i < l; i++)
+  //{
+  //  cout << res[i]<<endl;
+  //}
   
 
   //TString s1("abaa");
@@ -54,6 +55,15 @@ int main()
 
   //TString s("ffàààòòòòòòfg");
   //cout << s.MasSymvol();
+
+  int d = 0;
+  TString s("asfggasgffgas44");
+  int* a;
+  a = s.CharPositions("as",d);
+  for (int i = 0; i < d; i++)
+  {
+    cout << a[i]<<endl;
+  }
 
   return 0;
 }
